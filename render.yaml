@@ -14,6 +14,11 @@ services:
         fromDatabase:
           name: railway
           connectionString: "postgresql://postgres:3FCeaFaECB1FgGa1bb5-53524-5fb63-@roundhouse.proxy.rlwy.net:46801/railway"
+          database : "railway"
+          host: "@roundhouse.proxy.rlwy.net"
+          password : "3FCeaFaECB1FgGa1bb5-53524-5fb63-"
+          port : 46801
+          user: "postgres"
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
