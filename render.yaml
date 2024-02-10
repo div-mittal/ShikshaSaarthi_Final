@@ -1,5 +1,5 @@
 databases:
-  - name: ShikshaSaarthi
+  - name: railway
     databaseName: railway
     user: postgres
 
@@ -12,8 +12,8 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: ShikshaSaarthi
-          property: connectionStringpostgresql://postgres:3FCeaFaECB1FgGa1bb5-53524-5fb63-@roundhouse.proxy.rlwy.net:46801/railway
+          name: railway
+          connectionString: "postgresql://postgres:3FCeaFaECB1FgGa1bb5-53524-5fb63-@roundhouse.proxy.rlwy.net:46801/railway"
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
