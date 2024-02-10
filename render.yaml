@@ -15,7 +15,7 @@ services:
           name: ShikshaSaarthi
           property: connectionStringpostgresql://postgres:3FCeaFaECB1FgGa1bb5-53524-5fb63-@roundhouse.proxy.rlwy.net:46801/railway
       - key: SECRET_KEY
-        generateValue: 'django-insecure-2xtx)3qge^qbriami15zghcv_7)f4&!oa3rig9mpiuws7t&40w'
+        generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
       - key: account_sid
