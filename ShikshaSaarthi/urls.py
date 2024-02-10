@@ -8,7 +8,7 @@ from Resources import views as resources_views
 from Resources import urls as resources_urls
 from Resources import views as resources_views
 
-
+app_name='ss'
 
 urlpatterns = [
     path("admin/", admin.site.urls),

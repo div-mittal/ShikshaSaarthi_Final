@@ -1,339 +1,955 @@
-{% extends "ShikshaSaarthi/base.html" %}
 {% load static %}
-{% block content %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Govt Policies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body{
+        /* background-image: url("https://images.squarespace-cdn.com/content/v1/5421b6e2e4b0a6db313b8b24/1613932175243-LWAQF519CTRPKQN4XJVC/image-from-rawpixel-id-2620215-jpeg.jpg"); */
+        /* background-image: url("https://images.pexels.com/photos/7130555/pexels-photo-7130555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"); */
+        background-color: #e9d9ff;
+        background-position: center;
+        background-repeat: no-repeat;
+        /* background-size: cover; */
+        /* height: 100%; */
+      }
 
-<style>
-  .page-heading {
-    font-size: 60px;
-    text-decoration: underline 3px;
-  }
-  .page-description {
-    font-size: 25px;
-  }
-    .filterDiv {
-      float: left;
-      background-color: #666666;
-      color: #ffffff;
-      width: 140px;
-      height: 100px;
-      line-height: 30px;
-      text-align: center;
-      margin: 3px;
+      .navbar-nav{
+        font-size: larger;
+        font-weight: 500;
+      }
+
+      .navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
+        color: rgb(0, 0, 0);
+      }
+
+      .container-fluid {
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+        position: relative;
+        z-index: 1;
+        background: inherit;
+        /* overflow: hidden; */
+      }
+
+      .container-fluid:before {
+        content: "";
+        position: absolute;
+        background: inherit;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 30px;
+        /* box-shadow: inset 0 0 2000px rgba(150, 150, 150, 0.5); */
+        filter: blur(10px);
+        /* margin: -20px; */
+      }
+
+      .heading{
+        width: 80%;
+        margin: auto;
+        color: #1c0345;
+        text-align: justify;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        /* display: flex; */
+      }
+
+      .heading h1{
+        font-family: century gothic;
+        /* text-decoration: underline; */
+        padding-top: 5%;
+        font-weight: 900;        
+        text-transform: uppercase;
+      }
+
+      .heading p{
+        /* font-family: century; */
+        font-size: large;
+        margin-bottom: 40px;
+      }
+
+      .heading ul{
+        font-weight: bold;
+        padding: auto;
+        list-style: none;
+        font-size: large;
+      }
+
+      .heading li{
+        color: rgb(156, 70, 236);
+        padding: 8px;
+        list-style: circle;
+      }
+
+      .heading li:hover{
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+      }
+      
+      .box{
+        text-align: center;
+        width: 300px;
+        height: 50px;
+        margin-bottom: 10px;
+        background-color: #fffcf4;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        box-shadow: 5px 5px 5px rgb(200, 183, 244);
+        transition: 0.2s ease all;
+      }
+
+      .box:hover{
+        background-color: #ff0661;
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        transition: 0.2s ease all;
+        /* translate: 4px 4px; */
+      }
+
+      .box:active{
+        scale: 1.1;
+        transform: ease all 0.5s;
+      }
+      
+      .specHeads{
+        width: fit-content;
+        display: block;
+      }
+
+      .specHeads li:hover{
+        color:  rgb(156, 70, 236);
+        cursor: text;
+      }
+
+      .PunjabTXT li{
+        font-weight: 500;
+        display: none;
+      }
+
+      .PunjabTXT h5{
+        display: none;
+      }
+
+      .PunjabTXT li:hover{
+        color: rgb(156, 70, 236);
+        cursor: text;
+      }
+
+      .PunjabTXT p{
+        margin-bottom: 5px;   
+        display: none;     
+      }
+
+      .eduNat p{
+        display: none;
+      }
+
+      .eduNat li{
+        list-style: circle;
+        display: none;
+      }
+      
+      .eduNat h5{
+        display: none;
+      }
+
+      .eduNgo .p{
+        display: none;
+      }
+
+      .eduState select{
+        display: none;
+      }
+      
+      .site-footer
+    {
+      background-color:#26272b;
+      padding:45px 0 20px;
+      font-size:15px;
+      line-height:24px;
+      color:#737373;
+    }
+    .site-footer hr
+    {
+      border-top-color:#bbb;
+      opacity:0.5
+    }
+    .site-footer hr.small
+    {
+      margin:20px 0
+    }
+    .site-footer h6
+    {
+      color:#fff;
+      font-size:16px;
+      text-transform:uppercase;
+      margin-top:5px;
+      letter-spacing:2px
+    }
+    .site-footer a
+    {
+      color:#737373;
+    }
+    .site-footer a:hover
+    {
+      color:#3366cc;
+      text-decoration:none;
+    }
+    .footer-links
+    {
+      padding-left:0;
+      list-style:none
+    }
+    .footer-links li
+    {
+      display:block
+    }
+    .footer-links a
+    {
+      color:#737373
+    }
+    .footer-links a:active,.footer-links a:focus,.footer-links a:hover
+    {
+      color:#3366cc;
+      text-decoration:none;
+    }
+    .footer-links.inline li
+    {
+      display:inline-block
+    }
+    .site-footer .social-icons
+    {
+      text-align:right
+    }
+    .site-footer .social-icons a
+    {
+      width:40px;
+      height:40px;
+      line-height:40px;
+      margin-left:6px;
+      margin-right:0;
+      border-radius:100%;
+      background-color:#33353d
+    }
+    .copyright-text
+    {
+      margin:0
+    }
+    @media (max-width:991px)
+    {
+      .site-footer [class^=col-]
+      {
+        margin-bottom:30px
+      }
+    }
+    @media (max-width:767px)
+    {
+      .site-footer
+      {
+        padding-bottom:0
+      }
+      .site-footer .copyright-text,.site-footer .social-icons
+      {
+        text-align:center
+      }
+    }
+    .social-icons
+    {
+      padding-left:0;
+      margin-bottom:0;
+      list-style:none
+    }
+    .social-icons li
+    {
+      display:inline-block;
+      margin-bottom:4px
+    }
+    .social-icons li.title
+    {
+      margin-right:15px;
+      text-transform:uppercase;
+      color:#96a2b2;
+      font-weight:700;
+      font-size:13px
+    }
+    .social-icons a{
+      background-color:#eceeef;
+      color:#818a91;
+      font-size:16px;
+      display:inline-block;
+      line-height:44px;
+      width:44px;
+      height:44px;
+      text-align:center;
+      margin-right:8px;
+      border-radius:100%;
+      -webkit-transition:all .2s linear;
+      -o-transition:all .2s linear;
+      transition:all .2s linear
+    }
+    .social-icons a:active,.social-icons a:focus,.social-icons a:hover
+    {
+      color:#fff;
+      background-color:#29aafe
+    }
+    .social-icons.size-sm a
+    {
+      line-height:34px;
+      height:34px;
+      width:34px;
+      font-size:14px
+    }
+    .social-icons a.facebook:hover
+    {
+      background-color:#3b5998
+    }
+    .social-icons a.twitter:hover
+    {
+      background-color:#00aced
+    }
+    .social-icons a.linkedin:hover
+    {
+      background-color:#007bb6
+    }
+    .social-icons a.dribbble:hover
+    {
+      background-color:#ea4c89
+    }
+    @media (max-width:767px)
+    {
+      .social-icons li.title
+      {
+        display:block;
+        margin-right:0;
+        font-weight:600
+      }
+    }
+
+    .card {
+      /* overflow: visible;
+      width: 190px;
+      height: 254px; */
+    }
+
+    .cards{
+      display: flex;
+      /* height: 500px; */
+      object-fit: contain;
+      flex-direction: column;
+    }
+
+    .cards img{
+      max-width:100%;
+      height:auto;
+    }
+
+    .three{
+      display: flex;
+    }
+
+    .showAll{
+      width: 200px;
+      height: 40px;
+      font-family: 'Times New Roman', Times, serif;
+      border-radius: 5px;
+      background-image: url("uploads/policy_bg2.jpg");
+      /* border: 0.5px solid rgb(120, 0, 240); */
+      border: none;
+      transition: ease all 0.1s;
+      box-shadow:  3px 3px 3px #1c1f6b;
+    }
+
+    .showAll:active{
+      box-shadow: inset 3px 3px 3px #1c1f6b;
+      translate: 1px 1px;
+      transition: ease all 0.1s;
+    }
+
+    .specHeads{
       display: none;
     }
-    
-    .show {
-      display: block;
+
+    .mainHeads{
+      display: none;
     }
-    
-    .container {
-      margin-top: 20px;
-      overflow: hidden;
-    }
-    
-    /* Style the buttons */
-    .btn {
-      border: none;
-      outline: none;
-      padding: 12px 16px;
-      background-color: #f1f1f1;
+
+    .states{
+      background-image: url("{% static 'images/policy_bg2' %}");
+      color: #eee8e8;
+      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: bold;
+      border: 2px solid transparent;
+      border-radius: 15px;
       cursor: pointer;
     }
-    
-    .btn:hover {
-      background-color: #ddd;
+
+    option{
+      /* display: none; */
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'Times New Roman', Times, serif;
+      position: absolute;
+      z-index: 1;
+      min-width: 200px;
+      color: #000117;
+      background-color: rgb(220, 191, 241);
+      /* border: 2px solid #544caf; */
+      border-radius: 0px 15px 15px 15px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
-    
-    .btn.active {
-      background-color: #666;
-      color: white;
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+    /* Circle with Pic */
+  
+* {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+}
+body {
+  background-color: #E9D9FF;
+}
+.main-container {
+  min-height: 100px;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  height: 400px;
+  overflow: hidden;
+}
+.main {
+  margin: 0px auto;
+  width: 380px;
+  height: 380px;
+  position: relative;
+}
+.big-circle {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 3px solid #d0a6fd;
+  border-radius: 50%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  animation: Rotate 20s linear infinite;
+  -webkit-animation: Rotate 20s linear infinite;
+}
+.icon-block {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  background-image: linear-gradient(180deg, #c6b0f1 0%, #c297db 100%);
+  -webkit-background-image: linear-gradient(180deg, #bdadda 0%, #d39ce9 100%);
+  box-shadow: 0 2px 4px 0 #3e5ada;
+  -webkit-box-shadow: 0 2px 4px 0 #3e5ada;
+}
+.icon-block img {
+  margin: 0px auto;
+  width: 86%;
+  animation: Rotate-reverse 20s linear infinite;
+  -webkit-animation: Rotate-reverse 20s linear infinite;
+}
+.icon-block:first-child {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.icon-block:nth-child(2) {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  -webkit-transform: translate(50%, -50%);
+}
+.icon-block:nth-child(3) {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  -webkit-transform: translate(-50%, 50%);
+}
+.icon-block:nth-child(4) {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+/* circle content */
+.circle {
+  animation: circle-rotate 20s linear infinite;
+  -webkit-animation: circle-rotate 20s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+  width: 75%;
+  height: 75%;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+}
+.circle .icon-block img {
+  animation: img-rotate 20s linear infinite;
+  -webkit-animation: img-rotate 20s linear infinite;
+}
+/* center logo */
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.center-logo img {
+  max-width: 300px;
+}
+
+/* keyframe animation */
+
+@keyframes Rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes Rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes Rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes Rotate-reverse {
+  from {
+    -webkit-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@keyframes circle-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(405deg);
+  }
+}
+
+@-webkit-keyframes circle-rotate {
+  from {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+  }
+  to {
+    -webkit-transform: translate(-50%, -50%) rotate(405deg);
+  }
+}
+
+@keyframes img-rotate {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(-405deg);
+  }
+}
+
+@-webkit-keyframes img-rotate {
+  from {
+    -webkit-transform: rotate(-45deg);
+  }
+  to {
+    -webkit-transform: rotate(-405deg);
+  }
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.left{
+  width: 50%;
+  height: 400px;
+  float: left;
+}
+
+.right{
+  width: 50%;
+  height: 400px;
+  float: right;
+}
+
+    .schemeLinks{
+      display: none;
+      font: bold;
+      background-color: #9491e7;
+      margin: 10%;
+      padding: 5%;
     }
-    .text-about{
-      width: 90%;
+
+    .schemeLinks li{
+      cursor: pointer;
+      border: #000117;
+      color: #000000;
+      font-weight: bolder;
     }
+    .schemeLinks a{
+      color: rgb(255, 255, 255);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: larger;
+      text-decoration: none;
+      /* background-color: #c896fb; */
+    }
+
+    .Nat{
+      color: rgb(0, 0, 0);
+    }
+
+    .ngo h5{
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .ngo p{
+      font-weight: normal;
+      font-family: 'Times New Roman', Times, serif;
+      margin-bottom: 2%;
+    }
+
+    .ngo li{
+      list-style: disc;
+    }
+
+    .statTxt h5{
+      font-style: italic;
+      font-weight: bold;
+    }
+
     </style>
-    <body>
-<div class="wrap" style="margin: 45px; padding: inherit; font-size: large; color: black;" >
-      <h1 class="page-heading"><b>Government Policies</b></h1>
-      <p class="page-description">The Indian government offers various scholarships and policies to support its citizens in pursuing education and promoting social and economic development. Here's a brief overview of some key government initiatives:</p>
+    <script src="{% static 'js/policies.js' %}"></script>
+  </head>
+
+  <body data-bs-theme="dark">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="rightnav">
+          <a class="navbar-brand " href="{% url 'home'%}"><img src="{% static 'images/LOGO_Name-01.png'%}" alt="Shiksha Saarthi" width="250" ></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="leftnav me-3">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item me-5">
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item dropdown me-5">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'rr:educational_content' %}">Education</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:job_listings' %}">Policies</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:mentor' %}">Mentor</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:job_listings' %}">Jobs</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:news' %}">News</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'contact_us' %}">Contact Us</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+              </li>
+            </ul>
+          </div>
+            <!-- <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+    </nav>
+
+
+    <div class="heading">
+      
+        <h1>Government Initiatives & Scholarships</h1>  
+        <div class="left">
+          <br><br>
+          <p>Welcome to a gateway of opportunities for a brighter tomorrow. This page unfolds the tapestry of government policies aimed at uplifting communities through education, healthcare, and overall well-being. Discover the scholarships that can be a stepping stone towards a future filled with possibilities. Let's embark on a journey of empowerment together.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae perferendis ex velit? Eum quaerat corrupti, commodi sint, explicabo voluptas ab vel, amet ipsam quis ratione repellendus quos dolore. Magnam ducimus officia beatae deleniti ad odio iusto. Odit maxime ea cumque voluptas assumenda aspernatu</p>
+        </div>
+        <div class="main-container right">
+          <div class="main">
+            <div class="big-circle">
+              <div class="icon-block"></div>
+              <div class="icon-block"></div>
+              <div class="icon-block"></div>
+              <div class="icon-block"></div>
+            </div>
+            <div class="center-logo">
+              <img src="{% static 'images/policyyy.png '%}" alt="logo" />
+            </div>
+          </div>
+        </div>
+      <!-- <center> -->
+        <!-- <input >Show All</input> -->
+        <input type="button" class="showAll" id="showAll" onclick="showAllHeads()" value="Show All">
+        <input type="button" class="showAll ms-3" id="showAll" onclick="showAllScheme()" value="Links to all schemes">
+      <!-- </center> -->
+
+      <div class="schemeLinks card" id="schemeLinks">
+        <ul>
+          <li>&rarr;<a href="https://scholarships.gov.in/" target="_blank">scholarships.gov.in</a></li>
+          <li>&rarr;<a href="https://www.mha.gov.in/en/about-us/central-armed-police-forces" target="_blank">mha.gov.in/en/about-us/central-armed-police-forces</a></li>
+          <li>&rarr;<a href="https://www.mygov.in/work-at-mygov/" target="_blank">mygov.in/work-at-mygov</a></li>
+          <li>&rarr;<a href="https://services.india.gov.in/service/listing?cat_id=2&ln=en" target="_blank">services.india.gov.in/service/listing?cat_id=2&ln=en</a></li>
+          <li>&rarr;<a href="https://www.mygov.in/" target="_blank">mygov.in</a></li>
+        </ul>
+      </div>
+
       <br><br>
-      <div id="myBtnContainer">
-          <button class="btn active" data-filter="all"> Show all</button>
-          <button class="btn" data-filter="education"> Educational Policies</button>
-          <button class="btn" data-filter="job"> Jobs</button>
-          <button class="btn" data-filter="scholarship"> Educational Scholarships</button>
-          <!-- <button class="btn" data-filter=""> Colors</button> -->
-      </div>
-      
-      <div class="container">
-          <button class="filterDiv education" data-related="nep" onclick="showtext('nep')">National Education Policy, 2020</button>
-          <button class="filterDiv scholarship" data-related="disabilities" onclick="showtext('disabilities')">Scholarships for students with disabilities</button>
-          <button class="filterDiv education" data-related="initiatives" onclick="showtext('initiatives')">Government Initiatives for Students</button>
-          <button class="filterDiv education" data-related="girl-policies" onclick="showtext('girl-policies')">Government Initiatives for Girls</button>
-          <button class="filterDiv job" data-related="work-env" onclick="showtext('work-env')">Safety, Health and Environment at Work Place</button>
-          <button class="filterDiv job" data-related="mgnrega" onclick="showtext('mgnrega')" style="line-height: 20px ">Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)</button>
-          <button class="filterDiv scholarship" data-related="minorities" onclick="showtext('minorities')">Scholarships for Minorities</button>
-          <button class="filterDiv scholarship " data-related="labour" onclick="showtext('labour')">Scholarships for Labour Workers</button>
-          <button class="filterDiv scholarship" data-related="backward" onclick="showtext('backward')">Scholarships for Backward Classes</button>
-          <button class="filterDiv scholarship" data-related="higher" onclick="showtext('higher')">Scholarships for Higher Education</button>
-          <button class="filterDiv job" data-related="pmkvy" onclick="showtext('pmkvy')">Pradhan Mantri Kaushal Vikas Yojana (PMKVY)</button>
-      </div>
-      
-      <div class="text-about">
+      <center>
+      <ul id="mainHeads" class="mainHeads">
+        <li class="box" onclick="catEduTxt()">Education</li>
+        <li class="box" onclick="catHealthTxt()">HealthCare</li>
+        <li class="box" onclick="catNutriTxt()">Nutrition</li>
+        <li class="box" onclick="catDevTxt()">Community Development</li>
+      </ul>
+    </center>
 
-        <!-- National Education Policy, 2020 -->
-          <div class="related-div nep">The National Education Policy 2020 is like a set of new rules and ideas for how students learn in India. Here are some simple points: <br>
-            
-            1. Kids from the age of 3 to 6 will start learning early to help them grow smarter and happier.
-            <br>
-            2. In school, students will have a different way of learning. It will be more about understanding things and not just memorizing facts.
-            <br>
-            3. There will be fewer big exams that stress students out. Instead, there will be different ways to see how well they are doing.
-            <br>
-            4. Teachers will get better training, so they can teach students well.
-            <br>
-            5. We will use computers and the internet more to help students learn, especially in places far away.
-            <br>
-            6. Students will learn in their own language and also learn other languages.
-            <br>
-            7. There will be new rules to make sure everyone, no matter how rich or poor, gets a good education.
-            <br>
-            8. We will encourage students to be more creative and think for themselves.
-            <br>
-            9. More money will be spent on research and new ideas in education.
-            <br>
-            The goal is to make education in India better and more suited to the needs of students today.</div>
+      <div class="specHeads" id="specHeads">
 
-            <!-- Scholarships for Students with Disabilities  -->
-          <div class="related-div disabilities">
-            The Indian government provides scholarships for children with disabilities through various schemes, which can be accessed through the National Scholarship Portal <a href="https://scholarships.gov.in/" target="_blank" style="color: #0669d7;">(https://scholarships.gov.in/)</a>. These scholarships aim to support and empower children with disabilities in their educational pursuits. Some key features include:
-            <br>
-            1. Pre-Matric Scholarships: This scheme offers financial assistance to disabled students in classes 9 and 10 for covering various expenses, including tuition fees, textbooks, and disability-related aids.
-            <br>
-            2. Post-Matric Scholarships: These scholarships are available for disabled students pursuing higher education (11th and 12th grades and beyond) and cover a range of educational costs.
-            <br>
-            3. Scholarships for Students with Disabilities: Several scholarships are provided based on disability type, such as visual impairment, hearing impairment, locomotor disability, etc. These scholarships address the specific needs of students with different disabilities.
-            <br>
-            4. Scholarships for Research: Some scholarships are available for disabled students pursuing research or specialized studies in fields like science and technology.
-            <br>
-            5. Guidelines and Eligibility: The National Scholarship Portal provides detailed guidelines and eligibility criteria for each scholarship, including the required documents and application procedures.
-            <br>
-            6. Online Application: Applicants can apply for these scholarships online through the National Scholarship Portal, making it easier to access and track the status of their applications.
-            <br>
-            These scholarships are part of the Indian government's commitment to promoting inclusive education and ensuring that children with disabilities have equal opportunities to access quality education. The National Scholarship Portal <a href="https://scholarships.gov.in/" target="_blank" style="color: #0669d7 ;">(https://scholarships.gov.in/)</a> serves as a centralized platform for applying to and managing various government scholarships, including those designed for students with disabilities.
-          </div>
+        <span class="NatHead" id="NatHead">
+          <ul>
+            <li><h3><u>NATIONAL SCHOLARSHIP</u></h3></li>
+            <span class="Nat" id="Nat" onload="hideAllTxt()"></span>
+          </ul>
+        </span>
 
-          <!-- Government Initiatives for Students -->
-          <div class="related-div initiatives">
-            Government has Initiated many Eduactional Policies for students like :
-            <br>
-            1. STARS Project: The STARS (Strengthening Teaching-Learning and Results for States) project focuses on improving the quality and governance of school education in India by providing financial support to states.
-            <br>
-            2. Kala Utsav: Kala Utsav is an annual arts festival for students, promoting creativity and celebrating India's cultural diversity by showcasing students' artistic talents.
-            <br>
-            3. Swachh Vidyalaya Abhiyan: This initiative is part of the Swachh Bharat Abhiyan and aims to improve sanitation and hygiene facilities in schools across the country.
-            <br>
-            4. Shiksha Parv Initiative: Shiksha Parv is an annual event in India that celebrates the importance of education, involving various activities and programs to highlight the value of learning.
-            <br>
-            5. National Means cum Merit Scholarship (NMMS): NMMS is a scholarship program for economically disadvantaged students in India who show academic merit, providing financial assistance for their education.
-            <br>
-            6. National Talent Search Exam (NTSE): The NTSE is a prestigious scholarship examination for students in India. It identifies and supports talented students by providing financial assistance for their education.
-            <br>
-            7. ISHAN UDAY: ISHAN UDAY is a scholarship scheme for students from the northeastern region of India pursuing higher education, with the aim of providing financial support and promoting education in the northeastern states.
-            <br>
-            8. Ishan Vikas: Ishan Vikas is another scholarship scheme for students from the northeastern region, offering financial assistance for technical and professional courses to encourage higher education in the region.
-          </div>
-          <div class="related-div red">Red color details</div>
+        <span class="StatHead" id="StatHead">
+          <ul>
+            <li><h3><u>STATE-SPECIFIC SCHOLARSHIPS</u></h3></li>
+            <span class="Stat" id="Stat" onload="hideAllTxt()"></span>
+          </ul>
+        </span>
 
-          <!-- Government Initiatives for Girls -->
-          <div class="related-div girl-policies">
-            The Indian government has initiated several programs and schemes to promote and support girls' education in the country. These initiatives are aimed at addressing gender disparities in education and ensuring that girls have equal access to quality education. Here are some key details about these initiatives:
-              <br>
-              1. <b>Beti Bachao, Beti Padhao (BBBP):</b> Launched in 2015, this program seeks to address the declining child sex ratio and promote the education of girls. It includes awareness campaigns, scholarship schemes, and support for the girl child's education.
-              <br>
-              2. <b>Sarva Shiksha Abhiyan (SSA):</b> SSA is a flagship program that aims to provide elementary education to all children, with a special focus on girls and children from disadvantaged groups. It includes provisions for gender-sensitive infrastructure and teacher training.
-              <br>
-              3. <b>Kasturba Gandhi Balika Vidyalaya (KGBV):</b> KGBV schools are residential schools for girls from disadvantaged backgrounds, providing them with quality education, life skills, and vocational training.
-              <br>
-              4. <b>Girl Education Schemes:</b> Various states in India have implemented schemes like the Ladli Scheme in Delhi and the Apni Beti Apna Dhan Scheme in Haryana, which offer financial incentives and support for girls' education.
-              <br>
-              5. <b>Sukanya Samriddhi Yojana:</b> This is a savings scheme that encourages parents to save for the future education and marriage expenses of their girl child. It offers tax benefits and competitive interest rates.
-              <br>
-              6. <b>Udaan:</b> The Udaan program is aimed at providing girl students from Jammu and Kashmir with special coaching and support to prepare for engineering entrance exams, promoting their participation in technical education.
-              <br>
-              7. <b>Scholarship Schemes:</b> The government provides various scholarships for girl students, such as the National Means cum Merit Scholarship (NMMS) and the Indira Gandhi Scholarship for Single Girl Child, to facilitate their access to education.
-              <br>
-              8. <b>Infrastructure Development:</b> Efforts are made to improve school infrastructure, including the construction of girls' toilets, to create a safe and conducive learning environment.
-              <br>
-              These government initiatives underscore the commitment to girls' education and gender equality in India, seeking to remove barriers and promote educational opportunities for girls, especially those from marginalized communities.
-          </div>
-          <div class="related-div blue">Blue color specifics</div>
-
-          <!-- Safety, Health and Environment at Work Place -->
-          <div class="related-div work-env">The Constitution of India provide detailed provisions for the rights of the citizens and also lays down the Directive Principles of State Policy which set an aim to which the activities of the state are to be guided. On the basis of these Directive Principles as well as international instruments, Government is committed to regulate all economic activities for management of safety and health risks at workplaces and to provide measures so as to ensure safe and healthy working conditions for every working man and woman in the nation. Government recognizes that safety and health of workers has a positive impact on productivity and economic and social development. Prevention is an integral part of economic activities as high safety and health standard at work is as important as good business performance for new as well as existing industries.
-            <br><br>
-            Read More about Safety, Health and Environment at Work Place ...<a href="https://labour.gov.in/sites/default/files/SafetyHealthandEnvironmentatWorkPlace.pdf" target="_BLANK" title="Download (132.19 KB)" onclick="return confirm('You are being redirected to an new tab.')" role="link" class="text-400" style="color: #0669d7;">Download (132.19 KB) 
-            </a>
-          </div>
-
-          <!-- Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA) -->
-          <div class="related-div mgnrega">The Mahatma Gandhi National Rural Employment Guarantee Act (MNREGA) is a vital Indian social welfare program enacted in 2005. Its core objective is to provide rural households with a right to work, guaranteeing at least 100 days of wage employment per financial year. MNREGA primarily focuses on unskilled labor, offering employment in public works projects like road construction and water conservation.
-            <br>
-            The program places a strong emphasis on women's participation, ensuring that at least one-third of beneficiaries are women. Funding is shared between the central and state governments, with the central government covering wage payments and the state government handling other expenses. MNREGA promotes transparency and accountability through social audits.
-            <br>
-            Households in rural areas register for MNREGA work at local Gram Panchayats, and eligible households receive job cards that serve as an entitlement to demand work. To enhance efficiency and reduce leakages, the program has adopted the Electronic Fund Management System (e-FMS) for direct wage payments.
-            <br>
-            MNREGA has made a significant impact on rural employment, poverty reduction, and social development, serving as a vital safety net for vulnerable households. Nonetheless, challenges such as delayed wage payments and issues related to the quality of assets created remain areas for improvement.</div>
-          
-
-          <div class="related-div minorities">Scholarships for Minorities</div>
-          <div class="related-div labour">Scholarships for Labour Workers</div>
-          <div class="related-div backward">Scholarships for Backward Classes</div>
-          <div class="related-div higher">Scholarships for Higher Education</div>
-
-          <!-- Pradhan Mantri Kaushal Vikas Yojana (PMKVY) -->
-          <div class="related-div pmkvy">
-            The Pradhan Mantri Kaushal Vikas Yojana (PMKVY) is a flagship scheme of the Government of India aimed at promoting skill development and vocational training among Indian youth. Launched in 2015, PMKVY focuses on providing industry-relevant skills to enhance the employability of youth across the country.
-            <br>
-            Key features and components of PMKVY include:
-            <br>
-            1. <b>Skill Training</b>: PMKVY offers skill training programs that are aligned with industry needs and standards. Training is provided across a wide range of sectors, including manufacturing, services, agriculture, and allied sectors.
-            <br>
-            2. <b>Recognition of Prior Learning (RPL)</b>: The scheme recognizes and certifies skills acquired informally, enabling individuals to receive recognition for their existing skills.
-            <br>          
-            3. <b>Short-Term Training</b>: PMKVY offers short-term training programs, typically spanning 150-300 hours, allowing participants to quickly acquire employable skills.
-            <br>
-            4. <b>Special Projects</b>: Special projects are designed to address the specific skill requirements of particular industries and sectors. These projects are implemented in collaboration with industry partners.
-            <br>
-            5. <b>Kaushal and Rozgar Mela</b>: Job fairs and placement drives, known as Kaushal and Rozgar Melas, are organized to connect trained candidates with potential employers.
-            <br>
-            6. <b>Financial Incentives</b>: Successful candidates receive financial incentives upon completion of their training. These incentives help cover the cost of training and other related expenses.
-            <br>
-            7. <b>Quality Assurance</b>: Quality is a significant focus, with monitoring and assessment of training centers to ensure that the training provided is of high quality and meets industry standards.
-            <br>
-            8. <b>Mobile App</b>: PMKVY has a mobile app that provides information about the scheme, training centers, and available courses. It also allows candidates to apply for training programs.
-            <br>
-            9. <b>Placement Support</b>: PMKVY aims to increase the employability of trained individuals by providing placement support and industry linkages.
-            <br>
-            10. <b>Targeted Beneficiaries</b>: While PMKVY is open to all, it particularly targets candidates who are school/college dropouts, economically disadvantaged, or from marginalized communities.
-            <br>
-            PMKVY plays a crucial role in addressing India's skill gap by providing a structured framework for skill development and job placement. It aligns with the government's broader initiatives like Make in India and Digital India, promoting economic growth and self-employment.
-            <br>
-            The scheme is implemented by the Ministry of Skill Development and Entrepreneurship and is continuously evolving to meet the changing demands of the job market. It has played a significant role in enhancing the employability of the Indian workforce, fostering entrepreneurship, and supporting the country's vision of a skilled and self-reliant workforce. 
-          </div>
+        <span class="ngoHead" id="ngoHead">
+          <ul>
+            <li><h3><u>NGO INITIATIVES</u></h3></li>
+            <span class="ngo" id="ngo" onload="hideAllTxt()"></span>
+          </ul>
+        </span>
       </div>
     </div>
-      
-      <script>
-        let isAllVisible = true; // Variable to track the visibility of all buttons
 
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") {
-      if (isAllVisible) {
-          hideAllButtons(); // Hide all buttons if they are currently visible
-          isAllVisible = false; // Set the state to hidden
-      } else {
-          showAllButtons(); // Show all buttons if they are currently hidden
-          isAllVisible = true; // Set the state to visible
-      }
-  } else {
-      hideAllButtons(); // Hide all buttons
-      showFilteredButtons(c); // Show the filtered buttons
-  }
-  hideAllRelatedText(); // Hide all related text elements
-}
-
-function hideAllButtons() {
-  var buttons = document.querySelectorAll('.container .filterDiv');
-  buttons.forEach(function (button) {
-      button.style.display = 'none';
-  });
-}
-
-function showAllButtons() {
-  var buttons = document.querySelectorAll('.container .filterDiv');
-  buttons.forEach(function (button) {
-      button.style.display = 'block';
-  });
-}
-
-function showFilteredButtons(c) {
-  var buttons = document.querySelectorAll('.container .filterDiv.' + c);
-  buttons.forEach(function (button) {
-      button.style.display = 'block';
-  });
-}
+    <!-- <div class="sundr container">
+      <div class="niche ">
+        <img src="uploads/policyyy.png" class="img2">
+      </div>
+    </div> -->
 
 
-        function hideAllRelatedText() {
-      var relatedDivs = document.querySelectorAll('.related-div');
-      relatedDivs.forEach(function (div) {
-          div.style.display = 'none';
-      });
-  }
+<!-- National -->
+    <div class="eduNat" id="eduNat">
+        <p>
+          <h5>1. National Scheme of Incentive to Girls for Secondary Education (NSIGSE):</h5>
+            <ul>
+            	<li>Aims to promote the enrollment of girl students in secondary education and reduce gender disparities</li>
+            	<li>Key points: Cash incentive for completing secondary education, financial support for purchase of books and uniforms</li>
+            	<li>Application: Automatic for eligible girl students enrolled in government and government-aided schools</li>
+            </ul>
+        </p>
+        <br>
+        <p>
+          <h5>2. National Scholarship Portal (NSP):</h5>
+            <ul>
+            	<li>Provides a single platform for various scholarships offered by the central government, state governments, and other government agencies.</li>
+            	<li>Key points: Offers scholarships for students at different education levels based on merit and means.</li>
+            	<li>Application: Register and apply online on the NSP website (scholarships.gov.in).</li>
+            </ul>
+        </p>
+        <br>
+        <p>
+          <h5>3. Pradhan Mantri Scholarship Scheme for Central Armed Police Forces and Assam Rifles (PMSS):</h5>
+            <ul>
+            	<li>Offers scholarships to the wards of CAPF and Assam Rifles personnel martyred during duty.</li>
+            	<li>Key points: Financial support for higher education, including professional courses.</li>
+            	<li>Application: Apply through the respective CAPF or Assam Rifles welfare authorities.</li>
+            </ul>
+        </p>
+    </div>
+
+
+<!-- State wise -->
     
-        function AddClass(element, name) {
-          var i, arr1, arr2;
-          arr1 = element.className.split(" ");
-          arr2 = name.split(" ");
-          for (i = 0; i < arr2.length; i++) {
-            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-          }
-        }
+     <div class="eduState" id="eduState">
+      <center>
+        <select name="states" class="states" id="states" onclick="showStatTxt(this)">
+          <div class="drop-content">
+            <option id="none" value="none">Select State</option>
+            <option id="Andhra" value="Andhra">Andhra Pradesh</option>
+            <option id="Arunachal" value="Arunachal">Arunachal Pradesh</option>
+            <option id="Assam" value="Assam">Assam</option>
+            <option id="Bihar" value="Bihar">Bihar</option>
+            <option id="Chhattisgarh" value="Chhattisgarh">Chhattisgarh</option>
+            <option id="Goa" value="Goa">Goa</option>
+            <option id="Gujarat" value="Gujarat">Gujarat</option>
+            <option id="Haryana" value="Haryana">Haryana</option>
+            <option id="Himachal" value="Himachal">Himachal</option>
+            <option id="Jharkhand"value="Jharkhand">Jharkhand</option>
+            <option id="Karnataka" value="Karnataka">Karnataka</option>
+            <option id="Kerala" value="Kerala">Kerala</option>
+            <option id="Madhya" value="Madhya">Madhya Pradesh</option>
+            <option id="Maharashtra" value="Maharashtra">Maharashtra</option>
+            <option id="Manipur" value="Manipur">Manipur</option>
+            <option id="Meghalya" value="Meghalya">Meghalya</option>
+            <option id="Mizoram" value="Mizoram">Mizoram</option>
+            <option id="Nagaland" value="Nagaland">Nagaland</option>
+            <option id="Odisha" value="Odisha">Odisha</option>
+            <option id="Punjab" value="Punjab">Punjab</option>
+            <option id="Rajasthan" value="Rajasthan">Rajasthan</option>
+            <option id="Sikkim" value="Sikkim">Sikkim</option>
+            <option id="Tamil" value="Tamil">Tamil</option>
+            <option id="Telangana" value="Telangana">Telangana</option>
+            <option id="Tripura" value="Tripura">Tripura</option>
+            <option id="Uttarakhand" value="Uttarakhand">Uttarakhand</option>
+            <option id="Uttar" value="Uttar">Uttar Pradesh</option>
+            <option id="West" value="West">West Bengal</option>
+          </div>
+        </select>
+        <span class="statTxt" id="statTxt" style="text-align: justify;"></span>
+      </center>
+      </div>
     
-        function RemoveClass(element, name) {
-          var i, arr1, arr2;
-          arr1 = element.className.split(" ");
-          arr2 = name.split(" ");
-          for (i = 0; i < arr2.length; i++) {
-            while (arr1.indexOf(arr2[i]) > -1) {
-              arr1.splice(arr1.indexOf(arr2[i]), 1);     
-            }
-          }
-          element.className = arr1.join(" ");
-        }
-    
-        function showAll() {
-            var x, i;
-            x = document.getElementsByClassName("filterDiv");
-            for (i = 0; i < x.length; i++) {
-                x[i].classList.add("show");
-            }
-        }
-    
-        // Add active class to the current button (highlight it)
-        var btnContainer = document.getElementById("myBtnContainer");
-        var btns = btnContainer.getElementsByClassName("btn");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("active");
-                current[0].className = current[0].className.replace(" active", "");
-                this.className += " active";
-                var filter = this.getAttribute("data-filter");
-                filterSelection(filter);
-            });
-        }
-    
-        // Hide the text-about div at the start
-        var textAbout = document.querySelector('.text-about');
-        var relatedDivs = textAbout.querySelectorAll('.related-div');
-        relatedDivs.forEach(function (div) {
-            div.style.display = 'none';
-        });
-    
-        // Function to display the related div when a button is selected
-        function showtext(btnClass) {
-          hideAllRelatedText();
-            var relatedDiv = textAbout.querySelector('.related-div.' + btnClass);
-            relatedDiv.style.display = 'block';
-        }
-       
-    </script>       
-      
-      </body>
+
+<!-- By NGOs -->
+      <div class="eduNgo" id="eduNgo">
+        <div class="p">
+            <h5>Pratham:</h5>
+            <p>Pratham is one of the largest NGOs working towards the provision of quality education to underprivileged children in India. Their initiatives include the "Read India" campaign, "Learning Camps," and "Pratham Institute," which focus on literacy and numeracy skills among children and youth</p>
+              <li>Pratham's programs are often implemented in collaboration with local schools or community centers.</li>
+              <li>Beneficiaries can directly participate in Pratham's learning camps or vocational training programs by contacting their local Pratham chapter or visiting their website for more information.</li>
+            <br>
+            <h5>Akshara Foundation:</h5>
+            <p>Akshara Foundation works to ensure every child has access to quality education, focusing on foundational literacy and numeracy skills. They implement         programs such as "School Readiness Program" and "Library in Every School" to improve learning outcomes among underprivileged children</p>
+              <li>Schools and communities can collaborate with Akshara Foundation to implement their programs and establish libraries.</li>
+              <li>Parents and children can participate in Akshara Foundation's educational programs by enrolling in their community-based initiatives or contacting their local offices for support.</li>
+        </div>
+      </div>
+
+ <!-- FOR PUNJAB  -->
+      <div class="PunjabTXT" id="PunjabTXT">
+        <br><br>
+        <h5>Dr. Hargobind Khurana Scholarship Scheme:</h5>
+        <p>
+          <li>This scholarship is offered to students belonging to economically weaker sections of society for pursuing higher education </li>
+          <li>Key points: Financial assistance for tuition fees, books, and other educational expenses.</li>
+          <li>Application: Apply through the Department of Welfare of Scheduled Castes, Backward Classes & Minorities, Government of Punjab.</li>
+        </p>
+        <br>
+        <h5>Post-Matric Scholarship Scheme for Scheduled Caste Students:</h5>
+        <p>
+          <li>Provides financial assistance to students belonging to Scheduled Caste (SC) communities for pursuing post-matriculation education.</li>
+          <li>Key points: Covers tuition fees, maintenance allowance, and other incidental expenses.</li>
+          <li>Application: Apply online through the National Scholarship Portal (NSP) or the respective State Government scholarship portal.</li>
+        </p>
+        <h5>Mai Bhago Scheme for Girls' Education:</h5>
+        <p>
+          <li>Aims to improve girls' education by providing financial assistance to economically backward families for educating their daughters.</li>
+          <li>Key points: Financial support for tuition fees, books, and other educational expenses.</li>
+          <li>Application: Apply through the Department of Education, Government of Punjab.</li>
+        </p>
+      </div>
+    </div>
 
 
 
-{% endblock %}
+    <!-- <div class="container">
+            <div class="heads">
+                
+            </div>
+        </div>
+    </div> -->
+
+
+<!-- Site footer -->
+<footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About Us</h6>
+            <p class="text-justify">We at Shiksha Saarthi aim to provide free access to the basic and required knowledge of the world to the users along with one-to-one mentorship and provision to find jobs for themselves all at one place.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Our Team</h6>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/arnav-gupta-a810ba260/" target="_blank">Arnav Gupta</a></li>
+              <li><a href="https://www.linkedin.com/in/106-jatinchhabra/" target="_blank">Jatin Chhabra</a></li>
+              <li><a href="https://www.linkedin.com/in/sarthakkala/" target="_blank">Sarthak Kala</a></li>
+              <li><a href="https://www.linkedin.com/in/navansh-krishna-goswami-341713248/" target="_blank">Navansh Goswami</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="http://scanfcode.com/about/">About Us</a></li>
+              <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+              <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+              <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+              <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by 
+         <a href="#">Shiksha Saarthi</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

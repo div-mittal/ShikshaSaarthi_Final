@@ -3,7 +3,7 @@ from django.urls import include, path
 from django.contrib import admin
 from . import views as resources_views
 
-
+app_name='rr'
 urlpatterns = [
     path('educational_content/',resources_views.educational_content,name='educational_content'),
     path('course/<str:slug>/',resources_views.CourseOverview,name='coursepage'),

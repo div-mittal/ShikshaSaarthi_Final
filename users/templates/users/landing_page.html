@@ -1,153 +1,766 @@
-{% extends 'ShikshaSaarthi/base.html' %} {% load static %} {% block content %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-<div class="block">
-  <div class="image-container" style="float: left;height: 100%; width: 50%; background-repeat: no-repeat;
-  background-image: url(https://teamxp.in/wp-content/uploads/2023/04/teamxp-learning-center.png);background-position: center; background-size: contain;">
-  
-        
-  </div>
-  <div class="text-container" style="float: right; width: 50%; height: 100%;">
-    <b> Shiksha Saarthi</b>
-  </div>
-</div>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shiksha Saarthi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.0/dist/typeit.min.js"></script>
+    <style>
+      body{
+        /* background-image: url("https://images.squarespace-cdn.com/content/v1/5421b6e2e4b0a6db313b8b24/1613932175243-LWAQF519CTRPKQN4XJVC/image-from-rawpixel-id-2620215-jpeg.jpg"); */
+        background-image: url("{% static 'images/bg.png'%}");
+        background-color: #000117;
+        background-position: center;
+        background-repeat: no-repeat;
+        object-fit: contain;
+        background-size: cover;
+        /* height: 100%; */
+      }
 
-  <div 
-    class="lt"
-    style="
-      justify-content: center;
-      float: left;
-      width: 100%;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-image: url(https://teamxp.in/wp-content/uploads/2023/04/teamxp-learning-center.png);
-      margin-top: 245px;
-      margin-left: 212px;"
-  >
-    <meta charset=utf-8 />
-      <title>Mampel</title>
-          </head>
-            <body >
-              <h1> Welcome to <br>
-                  Shiksha Saarthi!</h1> 
-            </body>
-            <h5 class="chotu-text">
-              The right place to learn a skill and be educated.
-            </h5>
+      .navbar-nav{
+        font-size: larger;
+        font-weight: 400;
+      }
+
+      .container-fluid {
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+        position: relative;
+        z-index: 1;
+        background: inherit;
+        /* overflow: hidden; */
+      }
+
+      .container-fluid:before {
+        content: "";
+        position: absolute;
+        background: inherit;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 30px;
+        /* box-shadow: inset 0 0 2000px rgba(150, 150, 150, 0.5); */
+        filter: blur(10px);
+        /* margin: -20px; */
+      }
+
+      .pic{
+        height: 90%;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .img {
+        /* width: 60%; */
+        height: 90%;
+        display: flex;
+        margin-right: 20px;
+      }
+
+      .box{
+        width: 90%;
+        height: 90%;
+        display: flex;
+        margin: auto;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .right{
+        width: 70%;
+      }
+
+      .left{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 25px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .land{
+        color: #c992f3;
+        font-size: medium;
+        font-weight: bold;
+      }
+
+      .site-footer
+    {
+      background-color:#26272b;
+      padding:45px 0 20px;
+      font-size:15px;
+      line-height:24px;
+      color:#737373;
+    }
+    .site-footer hr
+    {
+      border-top-color:#bbb;
+      opacity:0.5
+    }
+    .site-footer hr.small
+    {
+      margin:20px 0
+    }
+    .site-footer h6
+    {
+      color:#fff;
+      font-size:16px;
+      text-transform:uppercase;
+      margin-top:5px;
+      letter-spacing:2px
+    }
+    .site-footer a
+    {
+      color:#737373;
+    }
+    .site-footer a:hover
+    {
+      color:#3366cc;
+      text-decoration:none;
+    }
+    .footer-links
+    {
+      padding-left:0;
+      list-style:none
+    }
+    .footer-links li
+    {
+      display:block
+    }
+    .footer-links a
+    {
+      color:#737373
+    }
+    .footer-links a:active,.footer-links a:focus,.footer-links a:hover
+    {
+      color:#3366cc;
+      text-decoration:none;
+    }
+    .footer-links.inline li
+    {
+      display:inline-block
+    }
+    .site-footer .social-icons
+    {
+      text-align:right
+    }
+    .site-footer .social-icons a
+    {
+      width:40px;
+      height:40px;
+      line-height:40px;
+      margin-left:6px;
+      margin-right:0;
+      border-radius:100%;
+      background-color:#33353d
+    }
+    .copyright-text
+    {
+      margin:0
+    }
+    @media (max-width:991px)
+    {
+      .site-footer [class^=col-]
+      {
+        margin-bottom:30px
+      }
+    }
+    @media (max-width:767px)
+    {
+      .site-footer
+      {
+        padding-bottom:0
+      }
+      .site-footer .copyright-text,.site-footer .social-icons
+      {
+        text-align:center
+      }
+    }
+    .social-icons
+    {
+      padding-left:0;
+      margin-bottom:0;
+      list-style:none
+    }
+    .social-icons li
+    {
+      display:inline-block;
+      margin-bottom:4px
+    }
+    .social-icons li.title
+    {
+      margin-right:15px;
+      text-transform:uppercase;
+      color:#96a2b2;
+      font-weight:700;
+      font-size:13px
+    }
+    .social-icons a{
+      background-color:#eceeef;
+      color:#818a91;
+      font-size:16px;
+      display:inline-block;
+      line-height:44px;
+      width:44px;
+      height:44px;
+      text-align:center;
+      margin-right:8px;
+      border-radius:100%;
+      -webkit-transition:all .2s linear;
+      -o-transition:all .2s linear;
+      transition:all .2s linear
+    }
+    .social-icons a:active,.social-icons a:focus,.social-icons a:hover
+    {
+      color:#fff;
+      background-color:#29aafe
+    }
+    .social-icons.size-sm a
+    {
+      line-height:34px;
+      height:34px;
+      width:34px;
+      font-size:14px
+    }
+    .social-icons a.facebook:hover
+    {
+      background-color:#3b5998
+    }
+    .social-icons a.twitter:hover
+    {
+      background-color:#00aced
+    }
+    .social-icons a.linkedin:hover
+    {
+      background-color:#007bb6
+    }
+    .social-icons a.dribbble:hover
+    {
+      background-color:#ea4c89
+    }
+    @media (max-width:767px)
+    {
+      .social-icons li.title
+      {
+        display:block;
+        margin-right:0;
+        font-weight:600
+      }
+    }
+
+
+    .card {
+      overflow: visible;
+      width: 190px;
+      height: 254px;
+    }
+
+    /* .cards{
+      display: flex;
+      
+      flex-direction: column;
+    } */
+
+    .cards img{
+      max-width:100%;
+      height:auto;
+    }
+
+    .three{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    /* card */
+    .e-card {
+  margin: 100px auto;
+  background: transparent;
+  box-shadow: 0px 8px 28px -9px rgba(0,0,0,0.45);
+  position: relative;
+  width: 240px;
+  height: 330px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: ease all 0.5s;
+}
+
+.e-card:hover{
+  scale: 1.1;
+  cursor: pointer;
+  transition: ease all 0.5s;
+}
+
+.wave {
+  position: absolute;
+  width: 540px;
+  height: 700px;
+  opacity: 0.6;
+  left: 0;
+  top: 0;
+  margin-left: -50%;
+  margin-top: -70%;
+  background: linear-gradient(744deg,#af40ff,#5b42f3 60%,#00ddeb);
+}
+
+.icon {
+  width: 3em;
+  margin-top: -1em;
+  padding-bottom: 1em;
+}
+
+.infotop {
+  text-align: center;
+  font-size: 20px;
+  position: absolute;
+  top: 5.6em;
+  left: 0;
+  right: 0;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 100;
+  position: relative;
+  top: 1em;
+  text-transform: lowercase;
+}
+
+.wave:nth-child(2),
+.wave:nth-child(3) {
+  top: 210px;
+}
+
+.playing .wave {
+  border-radius: 40%;
+  animation: wave 3000ms infinite linear;
+}
+
+.wave {
+  border-radius: 40%;
+  animation: wave 55s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 4000ms;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 50s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 5000ms;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 45s;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.text{
+  margin: auto;
+  text-align: center;
+}
+
+.text h2{
+  margin-top: revert;
+  font-size: 45px;
+  font-weight: 800;
+}
+
+.card {
+  position: relative;
+  width: 350px;
+  height: 180px;
+  box-sizing: border-box;
+  background-color: rgb(23, 23, 23);
+  /* background-image: url(uploads/card_bg.jpg); */
+  border: 5px solid #222;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          rgba(0, 0, 0, 0.23) 0px 6px 6px,
+          inset rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          inset rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: all ease-in-out 0.3s;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: rgba(193, 44, 223, 0.19) 0px 10px 20px,
+          rgba(193, 44, 223, 0.23) 0px 6px 6px,
+          inset rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          inset rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border: 5px solid #b671d6;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 30px;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: #d0d3e9;
+
+  cursor: default;
+}
+
+.card-des {
+  margin: 0;
+  font-size: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  cursor: default;
+}
+
+.card-text {
+  position: absolute;
+  margin: 0;
+  font-size: 14px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  right: 20px;
+  bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  opacity: 0;
+  transition: all ease-in-out 0.3s;
+  animation: textanimate 0.8s alternate infinite;
+  cursor: pointer;
+}
+
+.View_more{
+  text-decoration: none;
+  color: white;
+}
+
+.card:hover > .card-text {
+  opacity: 1;
+}
+
+@keyframes textanimate {
+  0% {
+    right: 20px;
+  }
+
+  100% {
+    right: 10px;
+  }
+}
+
+.arrow-icon {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.head1{
+  font-size: 55px;
+  padding-bottom: 50px;
+}
+
+.head2{
+  font-size: 40px;
+}
+
+.head3{
+  font-size: 20px;
+}
+
+@font-face {
+  font-family: myFirstFont;
+  src: url("{% static 'css/SAMAN___.TTF'%}");
+}
+
+
+    </style>
+  </head>
+  <body data-bs-theme="dark" onscroll="scrollDown()">
+
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="rightnav">
+          <a class="navbar-brand " href="#"><img src="{% static 'images/LOGO_Name-02.png' %}" alt="Shiksha Saarthi" width="250" ></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="leftnav me-3" >
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item me-5">
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item dropdown me-5">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'rr:educational_content' %}">Education</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:gov_documentation' %}">Policies</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:mentor' %}">Mentor</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:job_listings' %}">Jobs</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'rr:news' %}">News</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'contact_us' %}">Contact Us</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+              </li>
+            </ul>
           </div>
-        <!-- <div class="rt" style="float: right;">Shiksha Saarthi</div> -->
+            <!-- <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+            </div>
+          </div>
+        </nav>
+
+      <div class="main">
+        <div class="box">
+          <div class="pic">
+            <div class="left" >
+              <h2 class="head1" id="typing-text"><span><b>HELLO </b></span><span class="cursor" style="font-family: myFirstFont; ">SARTHAK,</span></h2>
+              <br><br>
+              <h2 class="head2"><b>WELCOME TO <br> SHIKSHA SAARTHI.</b></h2>
+              <p class="land head3"><b></b>THE CORRECT <br> PLACE TO LEARN<br> AND BE <br>EDUCATED</b></p>
+            </div>
+            <div class="right">
+            <img class="img" src="{% static 'images/landPic.svg'%}">
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="cards">
+        <!-- <img src="uploads/bg_home2.png"> -->
+        <div class="text" >
+          <h2>THE RESOURCES THAT WE OFFER</h2>
+        </div>
+          <div class="three">
+            
+            <div class="card">
+              <p class="card-title">Education</p>
+              <!-- <p class="card-des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+                deleniti officia. Aliquam repellendus illum pariatur nesciunt dolor et
+                natus consectetur repudiandae suscipit autem distinctio commodi vel sed,
+                id inventore modi.
+              </p> -->
+              <p class="card-text">
+                <span ><a href="{% url 'rr:educational_content' %}" class="View_more">View More</a></span>
+                <svg class="arrow-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
+                </svg>
+              </p>
+            </div>
+
+
+            <div class="card">
+              <p class="card-title">Policies</p>
+              <!-- <p class="card-des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+                deleniti officia. Aliquam repellendus illum pariatur nesciunt dolor et
+                natus consectetur repudiandae suscipit autem distinctio commodi vel sed,
+                id inventore modi.
+              </p> -->
+              <p class="card-text">
+                <span ><a href="{% url 'rr:gov_documentation' %}" class="View_more">View More</a></span>
+                <svg class="arrow-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
+                </svg>
+              </p>
+            </div>
+
+
+            <div class="card">
+              <p class="card-title">Mentor</p>
+              <!-- <p class="card-des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+                deleniti officia. Aliquam repellendus illum pariatur nesciunt dolor et
+                natus consectetur repudiandae suscipit autem distinctio commodi vel sed,
+                id inventore modi.
+              </p> -->
+              <p class="card-text">
+                <span ><a href="{% url 'rr:mentor' %}" class="View_more">View More</a></span>
+                <svg class="arrow-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
+                </svg>
+              </p>
+            </div>
+          </div>
+
+
+
+
+          <div class="three">
+            
+            <div class="card">
+              <p class="card-title">Jobs</p>
+              <!-- <p class="card-des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+                deleniti officia. Aliquam repellendus illum pariatur nesciunt dolor et
+                natus consectetur repudiandae suscipit autem distinctio commodi vel sed,
+                id inventore modi.
+              </p> -->
+              <p class="card-text">
+                <span ><a href="{% url 'rr:job_listings' %}" class="View_more">View More</a></span>
+                <svg class="arrow-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
+                </svg>
+              </p>
+            </div>
+
+
+            <div class="card">
+              <p class="card-title">News</p>
+              <!-- <p class="card-des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+                deleniti officia. Aliquam repellendus illum pariatur nesciunt dolor et
+                natus consectetur repudiandae suscipit autem distinctio commodi vel sed,
+                id inventore modi.
+              </p> -->
+              <p class="card-text">
+                <span ><a href="{% url 'rr:news' %}" class="View_more">View More</a></span>
+                <svg class="arrow-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
+                </svg>
+              </p>
+            </div>
+
+
+            <div class="card">
+              <p class="card-title">Contact Us</p>
+              <!-- <p class="card-des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis,
+                deleniti officia. Aliquam repellendus illum pariatur nesciunt dolor et
+                natus consectetur repudiandae suscipit autem distinctio commodi vel sed,
+                id inventore modi.
+              </p> -->
+              <p class="card-text">
+                <span ><a href="{% url 'contact_us' %}" class="View_more">View More</a></span>
+                <svg class="arrow-icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
+                </svg>
+              </p>
+            </div>
+          </div>
     </div>
-{% endblock %} {% block panel %}
-<div class="panel-1"></div>
 
-{% endblock %} {% block carousel %}
+        <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About Us</h6>
+            <p class="text-justify"></p>
+          </div>
 
-<!-- landing page -->
+          <div class="col-xs-6 col-md-3">
+            <h6>Our Team</h6>
+            <ul class="footer-links">
+              <li><a href="https://www.linkedin.com/in/arnav-gupta-a810ba260/" target="_blank">Arnav Gupta</a></li>
+              <li><a href="https://www.linkedin.com/in/106-jatinchhabra/" target="_blank">Jatin Chhabra</a></li>
+              <li><a href="https://www.linkedin.com/in/sarthakkala/" target="_blank">Sarthak Kala</a></li>
+              <li><a href="https://www.linkedin.com/in/navansh-krishna-goswami-341713248/" target="_blank">Navansh Goswami</a></li>
+            </ul>
+          </div>
 
-<!-- carousel -->
-<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-<script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="http://scanfcode.com/about/">About Us</a></li>
+              <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+              <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+              <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+              <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by 
+         <a href="{% url 'home' %}">Shiksha Saarthi</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+</footer>
 
-<article
-  x-data="slider"
-  class="relative w-full flex flex-shrink-0 overflow-hidden shadow-2xl"
->
-  <div
-    class="rounded-full bg-gray-600 text-white absolute top-5 right-5 text-sm px-2 text-center z-10"
-  >
-    <span x-text="currentIndex"></span>/
-    <span x-text="images.length"></span>
-  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-  <template x-for="(image, index) in images">
-    <figure
-      class="h96"
-      style="height: 24rem"
-      x-show="currentIndex == index + 1"
-      x-transition:enter="transition transform duration-300"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="transition transform duration-300"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-    >
-      <img
-        :src="image"
-        alt="Image"
-        class="absolute inset-0 z-10 h-full w-full object-cover opacity-70"
-      />
-      <!-- <figcaption class="absolute inset-x-0 bottom-1 z-20 w-96 mx-auto p-4 font-light text-sm text-center tracking-widest leading-snug bg-gray-300 bg-opacity-25">
-            Any kind of content here!
-            Primum in nostrane potestate est, quid meminerimus? Nulla erit controversia. Vestri haec verecundius, illi fortasse constantius. 
-        </figcaption> -->
-    </figure>
-  </template>
-
-  <button
-    @click="back()"
-    class="absolute left-14 top-1/2 -translate-y-1/2 w-11 h-11 flex justify-center items-center rounded-full shadow-md z-10 bg-gray-100 hover:bg-gray-200"
-  >
-    <svg
-      class="w-8 h-8 font-bold transition duration-500 ease-in-out transform motion-reduce:transform-none text-gray-500 hover:text-gray-600 hover:-translate-x-0.5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2.5"
-        d="M15 19l-7-7 7-7"
-      ></path>
-    </svg>
-  </button>
-
-  <button
-    @click="next()"
-    class="absolute right-14 top-1/2 translate-y-1/2 w-11 h-11 flex justify-center items-center rounded-full shadow-md z-10 bg-gray-100 hover:bg-gray-200"
-  >
-    <svg
-      class="w-8 h-8 font-bold transition duration-500 ease-in-out transform motion-reduce:transform-none text-gray-500 hover:text-gray-600 hover:translate-x-0.5"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2.5"
-        d="M9 5l7 7-7 7"
-      ></path>
-    </svg>
-  </button>
-</article>
-
-<script>
-  document.addEventListener("alpine:init", () => {
-    Alpine.data("slider", () => ({
-      currentIndex: 1,
-      images: [
-        "https://source.unsplash.com/1600x900/?beach",
-        "https://source.unsplash.com/1600x900/?cat",
-        "https://source.unsplash.com/1600x900/?dog",
-        "https://source.unsplash.com/1600x900/?lego",
-        "https://source.unsplash.com/1600x900/?textures&patterns",
-      ],
-      back() {
-        if (this.currentIndex > 1) {
-          this.currentIndex = this.currentIndex - 1;
+    <!-- <script>
+      const scrollThreshold = 100; // Scroll down only when the user has scrolled down at least 100 pixels
+      let previousScrollPosition = 0;
+      
+      function scrollDown() {
+        const currentScrollPosition = window.pageYOffset;
+        if (currentScrollPosition > previousScrollPosition + scrollThreshold) {
+          window.scrollBy(0, 590); // Scroll down by 500 pixels
         }
-      },
-      next() {
-        if (this.currentIndex < this.images.length) {
-          this.currentIndex = this.currentIndex + 1;
-        } else if (this.currentIndex <= this.images.length) {
-          this.currentIndex = this.images.length - this.currentIndex + 1;
-        }
-      },
-    }));
-  });
-</script>
+        previousScrollPosition = currentScrollPosition;
+      }
+    </script> -->
+    <!-- <script>
+      function scrollDown() {
+        window.scrollBy(0, 500); // Scroll down by 500 pixels
+      }
+    </script> -->
 
-{% endblock %}
+    <script>
+      const typingText = new TypeIt("#typing-text", {
+        speed: 200,
+        loop: true,
+        cursor: "_"
+      });
+      typingText
+        // .type("HELLO SARTHAK,")
+        .pause(4000)
+        .delete(11)
+        // .type("HELLO SARTHAK")
+        .go();
+    </script>
+
+  </body>
+</html>
