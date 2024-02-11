@@ -190,6 +190,7 @@
         <div class="left card">
           <div class="search card">
             <form id="job-search-form">
+              {% csrf_token %}
               <input type="text" id="jobSearchInput" class="jobSearchInput" placeholder="Enter Jobs according to your interest">
               <input type="submit" id="searchButton" class="searchButton">
             </form>
