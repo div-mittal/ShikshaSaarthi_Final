@@ -112,8 +112,6 @@ telepath==0.3.1
 tomlkit==0.12.3
 trove-classifiers==2024.1.31
 twilio==8.10.0
-Twisted==23.10.0
-twisted-iocpsupport==1.0.4
 txaio==23.1.1
 typing_extensions==4.9.0
 tzdata==2023.4
