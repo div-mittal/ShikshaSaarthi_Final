@@ -60,4 +60,4 @@ def landing_page(request):
         "user":user,
     }
 
-    return render(request,'users/landing_page.html',context=context)
+    return render(request,'users/index.html',context=context)

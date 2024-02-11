@@ -31,7 +31,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = os.getenv('SECRET_KEY')
-print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -138,7 +137,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 
 
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = BASE_DIR/"staticfiles"
 STATIC_URL = "/static/"
 
 if not DEBUG:
