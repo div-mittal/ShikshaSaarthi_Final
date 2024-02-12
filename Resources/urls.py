@@ -10,7 +10,7 @@ urlpatterns = [
     path('subject/<str:slug>',resources_views.SubjectOverview,name='subjectpage'),
     path('lectures/<str:slug>',resources_views.LectureOverview,name='videopage'),
 
-    path('job-listings/',resources_views.job_listings,name='job_listings'),
+    #path('job-listings/',resources_views.job_listings,name='job_listings'),
 
     path('mentor/',resources_views.mentor,name='mentor'),
     path('news/',resources_views.news,name='news'),

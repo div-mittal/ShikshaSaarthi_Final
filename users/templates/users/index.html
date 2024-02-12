@@ -533,8 +533,8 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'rr:mentor' %}">Mentor</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{% url 'rr:job_listings' %}">Jobs</a></li>
-                  <li><hr class="dropdown-divider"></li>
+                  {% comment %} <li><a class="dropdown-item" href="{% url 'rr:job_listings' %}">Jobs</a></li> {% endcomment %}
+                  {% comment %} <li><hr class="dropdown-divider"></li> {% endcomment %}
                   <li><a class="dropdown-item" href="{% url 'rr:news' %}">News</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'contact_us' %}">Contact Us</a></li>
@@ -631,7 +631,7 @@
 
 
 
-          <div class="three">
+          {% comment %} <div class="three">
             
             <div class="card">
               <p class="card-title">Jobs</p>
@@ -647,7 +647,7 @@
                   <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
                 </svg>
               </p>
-            </div>
+            </div> {% endcomment %}
 
 
             <div class="card">

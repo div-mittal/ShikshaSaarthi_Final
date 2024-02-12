@@ -80,8 +80,8 @@ def LectureOverview(request, slug):
 
 
 
-def job_listings(request):
-    return render(request,template_name='Resources/job_listings.html')
+# def job_listings(request):
+#     return render(request,template_name='Resources/job_listings.html')
 
 
 def gov_documentations(request):
