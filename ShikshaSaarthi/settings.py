@@ -33,28 +33,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOWED_ORIGINS=['*']
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    'https://shikshasaarthi.up.railway.app',
+]
+
 
 CORS_ALLOW_CREDENTIALS = True
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_TRUSTED_ORIGINS = ['https://shikshasaarthi.up.railway.app/']
 
-CORS_REPLACE_HTTPS_REFERER = True
-
-CSRF_COOKIE_DOMAIN = 'bluemix.net'
+CSRF_COOKIE_DOMAIN = 'railway.app'
 
 CORS_ORIGIN_WHITELIST = (
-    'https://front.bluemix.net/',
-    'front.bluemix.net',
-    'bluemix.net',
+    '*',
 )
 
 
@@ -63,6 +63,7 @@ CORS_ORIGIN_WHITELIST = (
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
     'Resources',
+    'corsheaders',
     'ShikshaSaarthi',
     'crispy_forms',
     'crispy_bootstrap5',
@@ -78,6 +79,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
